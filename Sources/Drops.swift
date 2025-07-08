@@ -23,6 +23,9 @@
 
 #if os(iOS) || os(visionOS)
 import UIKit
+#if canImport(SwiftUI)
+import SwiftUI
+#endif
 
 internal typealias AnimationCompletion = (_ completed: Bool) -> Void
 
@@ -76,6 +79,28 @@ public final class Drops {
     set { shared.didDismissDrop = newValue }
   }
 
+  /// Show a custom SwiftUI view as a drop.
+  /// - Parameters:
+  ///   - content: SwiftUI view to embed inside the drop.
+  ///   - position: Presentation position (top/bottom).
+  ///   - duration: Display duration.
+  ///   - accessibilityMessage: Optional accessibility message announced on show.
+#if canImport(SwiftUI)
+  public static func show<Content: View>(
+    _ content: Content,
+    position: Drop.Position = .top,
+    duration: Drop.Duration = .recommended,
+    accessibilityMessage: String? = nil
+  ) {
+    shared.show(
+      content,
+      position: position,
+      duration: duration,
+      accessibilityMessage: accessibilityMessage
+    )
+  }
+#endif
+
   // MARK: - Instance
 
   /// Create a new instance with a custom delay between drops.
@@ -92,6 +117,32 @@ public final class Drops {
       self.enqueue(presenter: presenter)
     }
   }
+
+  /// Show a custom SwiftUI view.
+#if canImport(SwiftUI)
+  public func show<Content: View>(
+    _ content: Content,
+    position: Drop.Position = .top,
+    duration: Drop.Duration = .recommended,
+    accessibilityMessage: String? = nil
+  ) {
+    DispatchQueue.main.async {
+      let accessibility = accessibilityMessage.map { Drop.Accessibility(message: $0) }
+      let stub = Drop(
+        title: "",
+        subtitle: nil,
+        icon: nil,
+        action: nil,
+        position: position,
+        duration: duration,
+        accessibility: accessibility
+      )
+      let container = SwiftUIDropContainer(content: content)
+      let presenter = Presenter(drop: stub, view: container, delegate: self)
+      self.enqueue(presenter: presenter)
+    }
+  }
+#endif
 
   /// Hide currently shown drop.
   public func hideCurrent() {

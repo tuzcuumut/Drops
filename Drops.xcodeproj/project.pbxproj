@@ -40,6 +40,7 @@
 		078898D02644A6CC009F04A5 /* WindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0785D37D26416DDF004D6171 /* WindowViewController.swift */; };
 		07CEDD3B2645EEC0004EE4CD /* DropsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CEDD3A2645EEBF004EE4CD /* DropsTests.swift */; };
 		07D8147726361DB7003F51DB /* Drops.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D8146D26361DB7003F51DB /* Drops.framework */; };
+		1734CB9B2E1D58A100FF6AC2 /* SwiftUIDropContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1734CB9A2E1D58A100FF6AC2 /* SwiftUIDropContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,7 @@
 		07D8149D26361DE8003F51DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../UIKitExample/ViewController.swift; sourceTree = "<group>"; };
 		07EB028828F08EA900ABC5B3 /* SwiftUIExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftUIExample.entitlements; sourceTree = "<group>"; };
 		07EB028928F08ECE00ABC5B3 /* UIKitExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UIKitExample.entitlements; sourceTree = "<group>"; };
+		1734CB9A2E1D58A100FF6AC2 /* SwiftUIDropContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDropContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 		07D8146F26361DB7003F51DB /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				1734CB9A2E1D58A100FF6AC2 /* SwiftUIDropContainer.swift */,
 				07D8147126361DB7003F51DB /* Info.plist */,
 				0785D37F26416E0E004D6171 /* AnimationContext.swift */,
 				0785D38126416E3A004D6171 /* Animator.swift */,
@@ -495,6 +498,7 @@
 				0785D38A26416EF3004D6171 /* Weak.swift in Sources */,
 				0785D38B26416EF3004D6171 /* Drops.swift in Sources */,
 				0785D38526416EF3004D6171 /* PassthroughView.swift in Sources */,
+				1734CB9B2E1D58A100FF6AC2 /* SwiftUIDropContainer.swift in Sources */,
 				0785D38D2641F487004D6171 /* Presenter.swift in Sources */,
 				0785D38926416EF3004D6171 /* DropView.swift in Sources */,
 				0785D38726416EF3004D6171 /* Drop.swift in Sources */,

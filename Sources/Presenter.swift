@@ -25,12 +25,17 @@
 import UIKit
 
 internal final class Presenter: NSObject {
-  init(drop: Drop, delegate: AnimatorDelegate) {
+  init(drop: Drop, view customView: UIView, delegate: AnimatorDelegate) {
     self.drop = drop
-    view = DropView(drop: drop)
+    self.view = customView
     viewController = .init(value: WindowViewController())
     animator = Animator(position: drop.position, delegate: delegate)
-    context = AnimationContext(view: view, container: maskingView)
+    context = AnimationContext(view: customView, container: maskingView)
+  }
+
+  /// Convenience initializer that builds the default `DropView`.
+  convenience init(drop: Drop, delegate: AnimatorDelegate) {
+    self.init(drop: drop, view: DropView(drop: drop), delegate: delegate)
   }
 
   let drop: Drop
