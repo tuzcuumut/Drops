@@ -73,7 +73,7 @@ internal final class Animator {
     view.translatesAutoresizingMaskIntoConstraints = false
     container.addSubview(view)
 
-    var constraints = [
+    var constraints = (view as? SwiftUIDropHosting)?.horizontalConstraints(in: container) ?? [
       view.centerXAnchor.constraint(equalTo: container.safeAreaLayoutGuide.centerXAnchor),
       view.leadingAnchor.constraint(greaterThanOrEqualTo: container.safeAreaLayoutGuide.leadingAnchor, constant: 20),
       view.trailingAnchor.constraint(lessThanOrEqualTo: container.safeAreaLayoutGuide.trailingAnchor, constant: -20)

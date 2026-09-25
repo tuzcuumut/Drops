@@ -55,6 +55,7 @@ internal final class Presenter: NSObject {
   func hide(animated: Bool, completion: @escaping AnimationCompletion) {
     isHiding = true
     let action = { [weak self] in
+      (self?.view as? SwiftUIDropHosting)?.detach()
       self?.viewController.value?.uninstall()
       self?.maskingView.removeFromSuperview()
       completion(true)
@@ -78,6 +79,7 @@ internal final class Presenter: NSObject {
     guard let containerView = container.view else { return }
 
     container.install()
+    (view as? SwiftUIDropHosting)?.attach(to: container)
 
     maskingView.translatesAutoresizingMaskIntoConstraints = false
     containerView.addSubview(maskingView)
